@@ -6,3 +6,4 @@ do
     echo "----------- running K = $((10**i))"
     make runall k=$((10**i))
 done
+make cleanall
