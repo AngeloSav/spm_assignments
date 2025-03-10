@@ -27,20 +27,37 @@ void softmax_auto(const float *__restrict__ input, float *__restrict__ output, s
 
 	// computes all exponentials with the shift of max_val and the total sum
 	float sum = 0.0f;
-#pragma GCC unroll 4
-#pragma GCC ivdep
+#pragma GCC unroll 8
 	for (size_t i = 0; i < K; ++i)
 	{
 		output[i] = std::exp(input[i] - max_val);
 		sum += output[i];
 	}
+// std::vector<float> sums = std::vector(GRP, 0.0f);
+// for (size_t i = 0; i < K; i += GRP)
+// {
+// 	for (size_t j = 0; j + i < GRP; ++j)
+// 	{
+// 		output[i + j] = std::exp(input[i + j] - max_val);
+// 		sums[j] += output[i + j];
+// 	}
+// }
+// sum = std::accumulate(sums.begin(), sums.end(), 0);
 
 // normalize by dividing for the total sum
-#pragma GCC ivdep
+#pragma GCC unroll 8
 	for (size_t i = 0; i < K; ++i)
 	{
 		output[i] /= sum;
 	}
+
+	// for (size_t i = 0; i < K; i += GRP)
+	// {
+	// 	for (size_t j = 0; j + i < GRP; ++j)
+	// 	{
+	// 		output[i + j] /= sum;
+	// 	}
+	// }
 }
 
 std::vector<float> generate_random_input(size_t K, float min = -1.0f, float max = 1.0f)

@@ -1,6 +1,6 @@
 CXX                = g++ -std=c++17
 OPTFLAGS	   = -O3
-AUTOFLAGS          = -march=native 
+AUTOFLAGS          = -march=native -funroll-loops
 AVXFLAGS           = -march=native -funroll-loops
 CXXFLAGS          += -Wall 
 INCLUDES	   = -I. -I./include

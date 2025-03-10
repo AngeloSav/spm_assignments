@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor} % For colors
+\usepackage[textheight=8in]{geometry}
+
+% Define colors for syntax highlighting
+\definecolor{keywordcolor}{rgb}{0.5, 0.0, 0.5}
+\definecolor{stringcolor}{rgb}{0.2, 0.6, 0.2}
+\definecolor{commentcolor}{rgb}{0.5, 0.5, 0.5}
+
+% Custom Rust language setup
+\lstdefinelanguage{Rust}{
+    keywords={fn, let, mut, pub, impl, as, match, enum, struct, self, Self, loop, move, ref, break, continue, if, else, for, in, return, while, use, mod, crate, super, dyn, where, async, await, trait, const, static, type, unsafe},
+    keywordstyle=\color{keywordcolor}\bfseries,
+    ndkeywords={String, Vec, Option, Result, Some, None, Ok, Err, i32, i64, u32, u64, f32, f64, bool, true, false, Box},
+    ndkeywordstyle=\color{keywordcolor}\bfseries,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{commentcolor}\itshape,
+    stringstyle=\color{stringcolor},
+    morestring=[b]",
+    morestring=[b]',
+    sensitive=true
+}
+
+% General listings settings
+\lstset{
+    language=Rust,
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{commentcolor},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\title{SPM - Assignment 1}
+\author{Angelo Savino}
+
+\begin{document}
+
+\maketitle
+
+
+\end{document}
