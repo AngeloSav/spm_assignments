@@ -1,0 +1,84 @@
+rm -fr *.o *~
+rm -fr softmax_auto softmax_avx softmax_plain
+----------- running K = 1
+g++ -std=c++17 -I. -I./include -Wall  -march=native -funroll-loops -ffast-math -O3 -o softmax_auto softmax_auto.cpp 
+g++ -std=c++17 -I. -I./include -Wall  -march=native -funroll-loops -ffast-math -O3 -o softmax_avx softmax_avx.cpp 
+g++ -std=c++17 -I. -I./include -Wall  -O3 -o softmax_plain softmax_plain.cpp 
+./softmax_plain 1
+# elapsed time (softime_plain): 8.589e-06s
+./softmax_auto 1 
+# elapsed time (softime_auto): 5.217e-06s
+./softmax_avx 1 
+# elapsed time (softime_avx): 4.795e-06s
+----------- running K = 10
+./softmax_plain 10
+# elapsed time (softime_plain): 6.295e-06s
+./softmax_auto 10 
+# elapsed time (softime_auto): 8.832e-06s
+./softmax_avx 10 
+# elapsed time (softime_avx): 5.839e-06s
+----------- running K = 100
+./softmax_plain 100
+# elapsed time (softime_plain): 5.863e-06s
+./softmax_auto 100 
+# elapsed time (softime_auto): 5.199e-06s
+./softmax_avx 100 
+# elapsed time (softime_avx): 6.827e-06s
+----------- running K = 1000
+./softmax_plain 1000
+# elapsed time (softime_plain): 1.8109e-05s
+./softmax_auto 1000 
+# elapsed time (softime_auto): 1.3799e-05s
+./softmax_avx 1000 
+# elapsed time (softime_avx): 5.957e-06s
+----------- running K = 10000
+./softmax_plain 10000
+# elapsed time (softime_plain): 0.000108435s
+./softmax_auto 10000 
+# elapsed time (softime_auto): 4.5571e-05s
+./softmax_avx 10000 
+# elapsed time (softime_avx): 2.9446e-05s
+----------- running K = 100000
+./softmax_plain 100000
+# elapsed time (softime_plain): 0.00115916s
+./softmax_auto 100000 
+# elapsed time (softime_auto): 0.00042343s
+./softmax_avx 100000 
+# elapsed time (softime_avx): 0.000254447s
+----------- running K = 1000000
+./softmax_plain 1000000
+# elapsed time (softime_plain): 0.0109076s
+./softmax_auto 1000000 
+# elapsed time (softime_auto): 0.00346355s
+./softmax_avx 1000000 
+# elapsed time (softime_avx): 0.00262429s
+----------- running K = 10000000
+./softmax_plain 10000000
+# elapsed time (softime_plain): 0.104714s
+./softmax_auto 10000000 
+# elapsed time (softime_auto): 0.0392803s
+./softmax_avx 10000000 
+# elapsed time (softime_avx): 0.0305185s
+----------- running K = 100000000
+./softmax_plain 100000000
+# elapsed time (softime_plain): 1.04815s
+./softmax_auto 100000000 
+# elapsed time (softime_auto): 0.389493s
+./softmax_avx 100000000 
+# elapsed time (softime_avx): 0.311845s
+----------- running K = 1000000000
+./softmax_plain 1000000000
+# elapsed time (softime_plain): 10.4804s
+./softmax_auto 1000000000 
+# elapsed time (softime_auto): 3.84707s
+./softmax_avx 1000000000 
+# elapsed time (softime_avx): 3.1053s
+----------- running K = 10000000000
+./softmax_plain 10000000000
+# elapsed time (softime_plain): 108.391s
+./softmax_auto 10000000000 
+# elapsed time (softime_auto): 39.6942s
+./softmax_avx 10000000000 
+# elapsed time (softime_avx): 32.1138s
+rm -fr *.o *~
+rm -fr softmax_auto softmax_avx softmax_plain

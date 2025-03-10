@@ -1,7 +1,7 @@
 CXX                = g++ -std=c++17
 OPTFLAGS	   = -O3
-AUTOFLAGS          = -march=native -funroll-loops
-AVXFLAGS           = -march=native -funroll-loops
+AUTOFLAGS          = -march=native -funroll-loops -ffast-math
+AVXFLAGS           = -march=native -funroll-loops -ffast-math
 CXXFLAGS          += -Wall 
 INCLUDES	   = -I. -I./include
 LIBS               = #-pthread -fopenmp

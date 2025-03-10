@@ -41,18 +41,6 @@ float inline find_max(const float *input, size_t K)
 void softmax_avx(const float *input, float *output, size_t K)
 {
 	float max_val = find_max(input, K);
-	// std::printf("found max: %f\n", max_val);
-	// std::printf("actual max: %f\n", *std::max_element(input, input + K));
-
-	// version of sum in the auto vectorized version
-	// 	float sum = 0.0f;
-	// #pragma GCC unroll 4
-	// #pragma GCC ivdep
-	// 	for (size_t i = 0; i < K; ++i)
-	// 	{
-	// 		output[i] = std::exp(input[i] - max_val);
-	// 		sum += output[i];
-	// 	}
 
 	// ---------- COMPUTE EXPONENTIALS ------------
 	size_t i = 0;
@@ -115,9 +103,9 @@ void softmax_avx(const float *input, float *output, size_t K)
 std::vector<float> generate_random_input(size_t K, float min = -1.0f, float max = 1.0f)
 {
 	std::vector<float> input(K);
-	// std::random_device rd;
-	// std::mt19937 gen(rd());
-	std::mt19937 gen(5489); // fixed seed for reproducible results
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	// std::mt19937 gen(5489); // fixed seed for reproducible results
 	std::uniform_real_distribution<float> dis(min, max);
 	for (size_t i = 0; i < K; ++i)
 	{
