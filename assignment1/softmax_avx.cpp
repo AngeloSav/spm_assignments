@@ -11,7 +11,6 @@ const float INFTY = std::numeric_limits<float>::infinity();
 
 float inline find_max(const float *input, size_t K)
 {
-
 	v8sf max_line = _mm256_set1_ps(-INFTY);
 	size_t i = 0;
 	for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
