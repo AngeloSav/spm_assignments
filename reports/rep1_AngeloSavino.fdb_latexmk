@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1741713189.53234 "/home/anglo/uni/spm/reports/rep1_AngeloSavino.tex" "rep1_AngeloSavino.pdf" "rep1_AngeloSavino" 1741713190.55254 0
-  "/home/anglo/uni/spm/reports/rep1_AngeloSavino.tex" 1741622318.33391 4586 9555c5f0ed8c155250fcf9d2bdb0d0e5 ""
+["pdflatex"] 1741771141.78783 "/home/anglo/uni/spm/reports/rep1_AngeloSavino.tex" "rep1_AngeloSavino.pdf" "rep1_AngeloSavino" 1741771142.79449 0
+  "/home/anglo/uni/spm/reports/rep1_AngeloSavino.tex" 1741771114.64689 4584 b85f3050afdfb7bbe0463e5dfc4cab8b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -77,10 +77,10 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1723902808 5498206 6c0f03cb370063b7ddbd563e5f9ce23a ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1723902904 8239390 f2ce68068a66921028a7b9ead811db95 ""
   "/usr/local/texlive/2024/texmf.cnf" 1723902805.09807 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "notebooks/rep1_softmax_performance.png" 1741713189.04443 406292 1ee7f3be7a61f0c5a30ee99a8500bd73 ""
-  "rep1_AngeloSavino.aux" 1741713190.51336 914 431bba3cc7f3a167d1fea6810c1e8c02 "pdflatex"
-  "rep1_AngeloSavino.out" 1741713190.51336 446 c91e67490a3e66bcd6fb71ad3c104027 "pdflatex"
-  "rep1_AngeloSavino.tex" 1741622318.33391 4586 9555c5f0ed8c155250fcf9d2bdb0d0e5 ""
+  "notebooks/rep1_softmax_performance.png" 1741771141.42578 389796 edf15982307f724893c7b4848af20a10 ""
+  "rep1_AngeloSavino.aux" 1741771142.73183 914 431bba3cc7f3a167d1fea6810c1e8c02 "pdflatex"
+  "rep1_AngeloSavino.out" 1741771142.73283 446 c91e67490a3e66bcd6fb71ad3c104027 "pdflatex"
+  "rep1_AngeloSavino.tex" 1741771114.64689 4584 b85f3050afdfb7bbe0463e5dfc4cab8b ""
   (generated)
   "rep1_AngeloSavino.aux"
   "rep1_AngeloSavino.log"

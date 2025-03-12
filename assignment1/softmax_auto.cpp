@@ -8,17 +8,6 @@
 void softmax_auto(const float *__restrict__ input, float *__restrict__ output, size_t K)
 {
 	// Find the maximum to stabilize the computation of the exponential
-	// const size_t GRP = 8;
-	// std::vector<float> max_vals = std::vector(GRP, -std::numeric_limits<float>::infinity());
-	// for (size_t i = 0; i < K; i += GRP)
-	// {
-	// 	for (size_t j = 0; j + i < GRP; ++j)
-	// 	{
-	// 		max_vals[j] = std::max(max_vals[j + i], input[i + j]);
-	// 	}
-	// }
-	// float max_val = *std::max_element(max_vals.begin(), max_vals.end());
-
 	float max_val = -std::numeric_limits<float>::infinity();
 	for (size_t i = 0; i < K; ++i)
 	{
@@ -33,16 +22,6 @@ void softmax_auto(const float *__restrict__ input, float *__restrict__ output, s
 		output[i] = std::exp(input[i] - max_val);
 		sum += output[i];
 	}
-// std::vector<float> sums = std::vector(GRP, 0.0f);
-// for (size_t i = 0; i < K; i += GRP)
-// {
-// 	for (size_t j = 0; j + i < GRP; ++j)
-// 	{
-// 		output[i + j] = std::exp(input[i + j] - max_val);
-// 		sums[j] += output[i + j];
-// 	}
-// }
-// sum = std::accumulate(sums.begin(), sums.end(), 0);
 
 // normalize by dividing for the total sum
 #pragma GCC unroll 8
@@ -50,14 +29,6 @@ void softmax_auto(const float *__restrict__ input, float *__restrict__ output, s
 	{
 		output[i] /= sum;
 	}
-
-	// for (size_t i = 0; i < K; i += GRP)
-	// {
-	// 	for (size_t j = 0; j + i < GRP; ++j)
-	// 	{
-	// 		output[i + j] /= sum;
-	// 	}
-	// }
 }
 
 std::vector<float> generate_random_input(size_t K, float min = -1.0f, float max = 1.0f)

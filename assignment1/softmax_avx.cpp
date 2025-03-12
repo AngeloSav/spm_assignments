@@ -13,7 +13,8 @@ float inline find_max(const float *input, size_t K)
 {
 	v8sf max_line = _mm256_set1_ps(-INFTY);
 	size_t i = 0;
-	for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
+	// for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
+	for (; i < K - (K % FLOATS_PER_LINE); i += FLOATS_PER_LINE)
 	{
 		v8sf cur_line = _mm256_loadu_ps(&input[i]);
 		max_line = _mm256_max_ps(max_line, cur_line);
@@ -44,7 +45,8 @@ void softmax_avx(const float *input, float *output, size_t K)
 	// ---------- COMPUTE EXPONENTIALS ------------
 	size_t i = 0;
 	v8sf sum_line = _mm256_set1_ps(0);
-	for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
+	// for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
+	for (; i < K - (K % FLOATS_PER_LINE); i += FLOATS_PER_LINE)
 	{
 		v8sf cur_line = _mm256_loadu_ps(&input[i]);
 
@@ -65,15 +67,16 @@ void softmax_avx(const float *input, float *output, size_t K)
 	// reduce sum
 	float to_reduce[FLOATS_PER_LINE] __attribute__((aligned(32)));
 	_mm256_store_ps(to_reduce, sum_line);
-	for (size_t j = 0; j < FLOATS_PER_LINE; j++)
-	{
-		sum += to_reduce[j];
-	}
+	// for (size_t j = 0; j < FLOATS_PER_LINE; j++)
+	// {
+	// 	sum += to_reduce[j];
+	// }
+	sum = std::reduce(to_reduce, to_reduce + 8);
 
 	// compute output of the remainder
 	for (; i < K; i++)
 	{
-		output[i] = std::exp(input[i]);
+		output[i] = std::exp(input[i] - max_val);
 		sum += output[i];
 	}
 
@@ -81,7 +84,8 @@ void softmax_avx(const float *input, float *output, size_t K)
 
 	i = 0;
 	v8sf divisor_line = _mm256_set1_ps(sum);
-	for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
+	// for (; i + FLOATS_PER_LINE - 1 < K; i += FLOATS_PER_LINE)
+	for (; i < K - (K % FLOATS_PER_LINE); i += FLOATS_PER_LINE)
 	{
 		v8sf cur_line = _mm256_loadu_ps(&output[i]);
 

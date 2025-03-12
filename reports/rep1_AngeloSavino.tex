@@ -73,9 +73,9 @@ At last, we divide each element by the computed sum of the exponentials using th
 \section{Performance Comparison}
 The final performance comparison is summarized by \cref{fig:comparison}. As we can see, there is not much difference between the version when the size of the vector $K$ is sufficiently small. 
 
-When vectors get biggger ($K > 10^3$), we can start noticing a difference in execution time. The unoptimized version is the slowest, while the auto optimized one results in a speedup of about 2.7x for the largest K we tested ($K = 10^{10}$) and the hand-optimized one improves our times by an additional 1.24x (3.3x faster than plain).
+When vectors get bigger ($K > 10^3$), we can start noticing a difference in execution time. The unoptimized version is the slowest, while the auto optimized one results in a speedup of about 2.7x for the largest K we tested ($K = 10^{8}$) and the hand-optimized one improves our times by an additional 1.24x (3.3x faster than plain).
 
-Overall, \texttt{softmax\_avx} is the best performing implementation, but it comes at the cost of portability, meaning that if we would like to run our code on other machines that are not provided of the AVX2 extension, we would be better off usign our auto-optimized version if we can accept slighlty higher run times.
+Overall, \texttt{softmax\_avx} is the best performing implementation, but it comes at the cost of portability, meaning that if we would like to run our code on other machines that are not provided of the AVX2 extension, we would be better off using our auto-optimized version if we can accept slighlty higher run times.
 
 
 \begin{figure}[h]
