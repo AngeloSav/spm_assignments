@@ -12,38 +12,6 @@
 \definecolor{stringcolor}{rgb}{0.2, 0.6, 0.2}
 \definecolor{commentcolor}{rgb}{0.5, 0.5, 0.5}
 
-% Custom Rust language setup
-\lstdefinelanguage{Rust}{
-    keywords={fn, let, mut, pub, impl, as, match, enum, struct, self, Self, loop, move, ref, break, continue, if, else, for, in, return, while, use, mod, crate, super, dyn, where, async, await, trait, const, static, type, unsafe},
-    keywordstyle=\color{keywordcolor}\bfseries,
-    ndkeywords={String, Vec, Option, Result, Some, None, Ok, Err, i32, i64, u32, u64, f32, f64, bool, true, false, Box},
-    ndkeywordstyle=\color{keywordcolor}\bfseries,
-    comment=[l]{//},
-    morecomment=[s]{/*}{*/},
-    commentstyle=\color{commentcolor}\itshape,
-    stringstyle=\color{stringcolor},
-    morestring=[b]",
-    morestring=[b]',
-    sensitive=true
-}
-
-% General listings settings
-\lstset{
-    language=Rust,
-    basicstyle=\ttfamily\small,
-    numbers=left,
-    numberstyle=\tiny\color{commentcolor},
-    stepnumber=1,
-    numbersep=5pt,
-    backgroundcolor=\color{white},
-    showspaces=false,
-    showstringspaces=false,
-    tabsize=4,
-    captionpos=b,
-    breaklines=true,
-    breakatwhitespace=false,
-}
-
 \title{SPM - Assignment 1}
 \author{Angelo Savino}
 
@@ -54,9 +22,9 @@
 \section{Handouts}
 This assignment consisted in writing an optimized version of the softmax function. The three versions we compared are the following:
 \begin{itemize}
-    \item \texttt{softmax\_plain}: Basic version of the softmax function that does not employ any kind of SIMD optimizaation.
+    \item \texttt{softmax\_plain}: Basic version of the softmax function that does not employ any kind of SIMD optimization.
     \item \texttt{softmax\_auto}: Version of the softmax function that relies on compiler optimizations to produce AVX code. 
-    \item \texttt{softmax\_avx}: Hand-optimized version of the code that uses AVX intrinsics.
+    \item \texttt{softmax\_avx}: Hand-optimized version of the code that uses AVX intrinsic.
 \end{itemize}
 
 \section{Softmax\_auto}
@@ -75,7 +43,7 @@ The final performance comparison is summarized by \cref{fig:comparison}. As we c
 
 When vectors get bigger ($K > 10^3$), we can start noticing a difference in execution time. The unoptimized version is the slowest, while the auto optimized one results in a speedup of about 2.7x for the largest K we tested ($K = 10^{8}$) and the hand-optimized one improves our times by an additional 1.24x (3.3x faster than plain).
 
-Overall, \texttt{softmax\_avx} is the best performing implementation, but it comes at the cost of portability, meaning that if we would like to run our code on other machines that are not provided of the AVX2 extension, we would be better off using our auto-optimized version if we can accept slighlty higher run times.
+Overall, \texttt{softmax\_avx} is the best performing implementation, but it comes at the cost of portability, meaning that if we would like to run our code on other machines that are not provided of the AVX2 extension, we would be better off using our auto-optimized version if we can accept slightly higher run times.
 
 
 \begin{figure}[h]
